@@ -2,11 +2,11 @@ name: Validate code
 
 on:
   push:
-    branches:
-      - '**'
+    branches: [ main ]
   pull_request:
-    branches:
-      - '**'
+    branches: [ main ]
+  workflow_dispatch:
+
 
 jobs:
   validate:
@@ -27,4 +27,14 @@ jobs:
       uses: golangci/golangci-lint-action@v6
 
     - name: Run tests
-      run: go test ./...
+      run: |
+        go test -v ./... -covermode=count -coverprofile=coverage.out
+        go tool cover -func=coverage.out -o=coverage.out
+    
+    - name: Update coverage report
+      uses: ncruces/go-coverage-report@v0
+      with:
+        report: true
+        chart: false
+        amend: true
+      continue-on-error: true

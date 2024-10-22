@@ -1,5 +1,12 @@
 # OrderedMap
 
+[![CI Status](https://github.com/schoren/orderedmap/actions/workflows/ci-validate.yaml/badge.svg)](https://github.com/schoren/orderedmap/actions/workflows/ci-validate.yaml)
+
+[![Go Report](https://goreportcard.com/badge/github.com/schoren/orderedmap)](https://goreportcard.com/report/github.com/schoren/orderedmap)
+
+[![Go Coverage](https://github.com/schoren/orderedmap/wiki/coverage.svg)](https://raw.githack.com/wiki/schoren/orderedmap/coverage.html)
+
+
 `OrderedMap` is a Go package that provides a map-like data structure which maintains the order of insertion. It supports JSON marshaling and unmarshaling, and provides various utility methods.
 
 `OrderedMap`s are immutable, meaning each time you set or delete an item, a new instance is created.
