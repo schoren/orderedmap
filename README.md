@@ -1,9 +1,7 @@
 # OrderedMap
 
 [![CI Status](https://github.com/schoren/orderedmap/actions/workflows/ci-validate.yaml/badge.svg)](https://github.com/schoren/orderedmap/actions/workflows/ci-validate.yaml)
-
 [![Go Report](https://goreportcard.com/badge/github.com/schoren/orderedmap)](https://goreportcard.com/report/github.com/schoren/orderedmap)
-
 [![Go Coverage](https://github.com/schoren/orderedmap/wiki/coverage.svg)](https://raw.githack.com/wiki/schoren/orderedmap/coverage.html)
 
 
