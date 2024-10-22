@@ -1,3 +1,79 @@
+// Package orderedmap provides an ordered map.
+//
+// The map maintains the order of insertion.
+//
+// The zero value of an OrderedMap is ready to use.
+//
+// Example:
+//
+//	package main
+//
+//	import (
+//		"fmt"
+//
+//		"github.com/schoren/orderedmap"
+//	)
+//
+//	func main() {
+//		om := orderedmap.New[string, int]()
+//
+//		om = om.MustSet("a", 1).MustSet("b", 2).MustSet("c", 3)
+//
+//		om.ForEach(func(key string, val int) error {
+//			fmt.Printf("%s: %d\n", key, val)
+//			return nil
+//		})
+//	}
+//
+// Output:
+//
+//	a: 1
+//	b: 2
+//	c: 3
+//
+// The package also provides JSON marshaling and unmarshaling.
+//
+// Example:
+//
+//	package main
+//
+//	import (
+//		"encoding/json"
+//		"fmt"
+//
+//		"github.com/schoren/orderedmap"
+//	)
+//
+//	func main() {
+//		om := orderedmap.New[string, int]()
+//
+//		om = om.MustSet("a", 1).MustSet("b", 2).MustSet("c", 3)
+//
+//		data, err := json.Marshal(om)
+//		if err != nil {
+//			panic(err)
+//		}
+//
+//		fmt.Println(string(data))
+//
+//		om2 := orderedmap.New[string, int]()
+//		err = json.Unmarshal(data, &om2)
+//		if err != nil {
+//			panic(err)
+//		}
+//
+//		om2.ForEach(func(key string, val int) error {
+//			fmt.Printf("%s: %d\n", key, val)
+//			return nil
+//		})
+//	}
+//
+// Output:
+//
+//	[{"Key":"a","Value":1},{"Key":"b","Value":2},{"Key":"c","Value":3}]
+//	a: 1
+//	b: 2
+//	c: 3
 package orderedmap
 
 import (
