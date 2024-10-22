@@ -210,7 +210,7 @@ func (om *OrderedMap[K, V]) ForEach(fn func(key K, val V) error) error {
 // Unordered returns a map with the same key-value pairs, but in an unordered map.
 func (om OrderedMap[K, V]) Unordered() map[K]V {
 	m := map[K]V{}
-	om.ForEach(func(key K, val V) error {
+	_ = om.ForEach(func(key K, val V) error {
 		m[key] = val
 		return nil
 	})
@@ -229,7 +229,7 @@ type jsonOrderedMapEntry[K comparable, V any] struct {
 
 func (om OrderedMap[K, V]) MarshalJSON() ([]byte, error) {
 	j := []jsonOrderedMapEntry[K, V]{}
-	om.ForEach(func(key K, asserts V) error {
+	_ = om.ForEach(func(key K, asserts V) error {
 		j = append(j, jsonOrderedMapEntry[K, V]{key, asserts})
 		return nil
 	})
