@@ -108,15 +108,19 @@ func (om OrderedMap[K, V]) MustSet(key K, asserts V) OrderedMap[K, V] {
 	return def
 }
 
-type keyAlreadyExistsError struct {
+// KeyAlreadyExistsError is returned when trying to add a key that already exists.
+// The error contains the key that already exists.
+type KeyAlreadyExistsError struct {
 	key any
 }
 
-func (e keyAlreadyExistsError) Unwrap() error {
+// Unwrap returns the wrapped error.
+func (e KeyAlreadyExistsError) Unwrap() error {
 	return ErrKeyAlreadyExists
 }
 
-func (e keyAlreadyExistsError) Error() string {
+// Error returns the error message.
+func (e KeyAlreadyExistsError) Error() string {
 	return fmt.Sprintf(`key "%v" already exists`, e.key)
 }
 
@@ -134,7 +138,7 @@ func (om OrderedMap[K, V]) Set(key K, asserts V) (OrderedMap[K, V], error) {
 	}
 
 	if _, exists := om.keyPosition[key]; exists {
-		return OrderedMap[K, V]{}, keyAlreadyExistsError{key}
+		return OrderedMap[K, V]{}, KeyAlreadyExistsError{key}
 	}
 
 	om.list = append(om.list, asserts)
